@@ -32,12 +32,9 @@ const Post = () => {
                 name="title"
                 style={{ width: "100%" }}
               />
-            </Grid>
-            <Grid item xs={12}>
               <Field
                 component={categorySelect}
                 name="category"
-                style={{ width: "100%" }}
                 variant="outlined"
               />
             </Grid>

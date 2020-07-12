@@ -18,7 +18,13 @@ const User = () => {
         validationSchema={validationSchema}
       >
         <Form>
-          <Grid container direction="column" justify="center" spacing={3}>
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            spacing={3}
+          >
             <Typography variant="h5" align="center">
               Adicionar artigo
             </Typography>
