@@ -3,18 +3,20 @@ import { Grid, Button, Typography } from "@material-ui/core";
 import * as yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
+import categorySelect from "../components/categorySelect";
+import editorComponent from "../components/editorComponent";
 
-const validationSchema = yup.object().shape({
-  email: yup.string().required(),
-  password: yup.string().required(),
-});
+const Post = () => {
+  const validationSchema = yup.object().shape({
+    title: yup.string().required(),
+    category: yup.string().required(),
+  });
 
-const User = () => {
   return (
     <>
       <Formik
         onSubmit={(values, actions) => console.log(values, actions)}
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ title: "", category: "artigo" }}
         validationSchema={validationSchema}
       >
         <Form>
@@ -22,25 +24,27 @@ const User = () => {
             <Typography variant="h5" align="center">
               Adicionar artigo
             </Typography>
-            <Grid item xl={12}>
+            <Grid item xs={12}>
               <Field
                 component={TextField}
                 variant="outlined"
-                label="Email"
-                name="email"
+                label="Título"
+                name="title"
                 style={{ width: "100%" }}
               />
             </Grid>
-            <Grid item xl={12}>
+            <Grid item xs={12}>
               <Field
-                component={TextField}
-                variant="outlined"
-                label="Password"
-                name="password"
+                component={categorySelect}
+                name="category"
                 style={{ width: "100%" }}
+                variant="outlined"
               />
             </Grid>
-            <Grid item xl={12}>
+            <Grid item xs={12}>
+              <Field component={editorComponent} name="editor" />
+            </Grid>
+            <Grid item xs={12}>
               <Button
                 size="large"
                 color="primary"
@@ -48,7 +52,7 @@ const User = () => {
                 variant="contained"
                 style={{ width: "100%" }}
               >
-                Logar
+                Postar
               </Button>
             </Grid>
           </Grid>
@@ -58,4 +62,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Post;
